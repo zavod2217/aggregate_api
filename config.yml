@@ -1,0 +1,33 @@
+# aggregate_api settings and info ---
+
+# Примеры:
+# --------- адрес GET запросов:
+# /rest/v1/contexts/server - получить все контексты
+# /rest/v1/contexts/users.admin.devices.virtual - информация о определенном контексте
+# /rest/v1/contexts/users.admin.models.example/variables - информация обо всех переменных контекста
+# /rest/v1/contexts/users.admin.models.example/variables/exampleTable?limit=2&offset=2 - информация о
+#                                                                                                  переменной контекста
+# /rest/v1/contexts/users.admin.devices.virtual/events?includeFormat=false - информация о событии контекста
+# /rest/v1/contexts/users.admin.devices.virtual/functions?includeFormat=false  - информация о функциях контекста
+# -------- адрес POST запросов:
+# /rest/v1/contexts/users.admin.devices.virtual/functions/calculate вызвать функцию контекста
+# -------- адрес PUT запросов:
+# /rest/v1/contexts/users.admin.models.example/variables/exampleTable - Заменяет переменную контекста
+#        Тело JSON: [{"name": "Room_1","description": "Machinery Storage"}]
+# -------- адрес PATCH запросов:
+# /rest/v1/contexts/users.admin.models.example/variables/exampleTable?record=2 Корректирует переменную контекста,
+#заменяя определенную запись. record — Запись для корректировки( умолчанию параметр 0 и корректируется первая запись)
+#         Тело JSON: [{"name": "Room_3","description": "Oxygen Plant"}]
+
+version: '1.0'
+services:
+  connect:
+    host: ""
+    port: ""
+  auth:
+    url: '/rest/auth'
+    login: ""
+    password: ""
+  request:
+    method: "post"
+    url: "/rest/v1/contexts/users.admin.models.testAPI/functions/getAllDevices"
